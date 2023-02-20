@@ -3,34 +3,35 @@
  * @return {ListNode}
  */
 
-class ListNode {
-  constructor(value, next = null) {
-    this.value = value;
-    this.next = next;
+class Node {
+  constructor(value, next) {
+    this.value = value === undefined ? 0 : value;
+    this.next = next === undefined ? null : next;
   }
 }
 
 var deleteDuplicates = function (head) {
-  let currentNode = head;
+  let current = head;
 
-  while (currentNode !== null && currentNode.next !== null) {
-    if (currentNode.value === currentNode.next.value) {
-      currentNode.next = currentNode.next.next;
-    } else {
-      currentNode = currentNode.next;
-    }
-  }
-  return currentNode;
+  while (current && current.next)
+    current.val == current.next.val
+      ? (current.next = current.next.next)
+      : (current = current.next);
+
+  return head;
 };
 
-const head = new ListNode(1);
+const a = new Node(1);
+const b = new Node(1);
+const c = new Node(2);
+const d = new Node(2);
+const e = new Node(3);
+const f = new Node(3);
 
-head.next = new ListNode(1);
+a.next = b;
+b.next = c;
+c.next = d;
+d.next = e;
+e.next = f;
 
-head.next.next = new ListNode(2);
-
-head.next.next.next = new ListNode(3);
-
-head.next.next.next.next = new ListNode(3);
-
-console.log(deleteDuplicates(head));
+console.log(deleteDuplicates(a));
