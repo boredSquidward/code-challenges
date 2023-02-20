@@ -4,55 +4,72 @@
  * @return {ListNode}
  */
 
+class Node {
+  constructor(val, next = null) {
+    this.val = val === undefined ? 0 : val;
+    this.next = next === undefined ? null : next;
+  }
+}
+
 var addTwoNumbers = function (l1, l2) {
-  let result = { ...l1 };
-  const arr1 = [];
-  const arr2 = [];
+  let result = new Node();
 
-  while (l1 && l2) {
-    arr1.push(l1.value);
-    arr2.push(l2.value);
+  let curr1 = l1;
+  let curr2 = l2;
 
-    l1 = l1.next;
-    l2 = l2.next;
-  }
+  let dummy = result;
+  let carry = 0;
+  let sum = 0;
 
-  let num1 = "";
-  let num2 = "";
+  while (curr1 || curr2 || carry) {
+    sum = (curr1 ? curr1.val : 0) + (curr2 ? curr2.val : 0) + carry;
 
-  for (let i = 0; i < arr1.length; i++) {
-    num1 = num1 + `${arr1[i]}`;
-  }
+    if (sum < 10) {
+      dummy.val = sum;
+      carry = 0;
+    } else {
+      dummy.val = sum - 10;
+      carry = 1;
+    }
 
-  for (let i = 0; i < arr2.length; i++) {
-    num2 = num2 + `${arr2[i]}`;
-  }
+    if (curr1) curr1 = curr1.next;
+    if (curr2) curr2 = curr2.next;
 
-  num1 = Number.parseInt(num1);
-  num2 = Number.parseInt(num2);
+    if (carry && !curr1 && !curr2) {
+      dummy.next = new Node();
+      dummy.next.val = carry;
+      carry = 0;
+      return result;
+    } else if (!carry && !curr1 && !curr2) {
+      return result;
+    }
 
-  let num3 = num1 + num2;
-  num3 = num3.toString().split("").reverse();
-
-  for (let i = 0; i < num3.length; i++) {
-    result.value = Number.parseInt(num3[i]);
-    result = result.next;
+    dummy.next = new Node();
+    dummy = dummy.next;
   }
 
   return result;
 };
 
-class ListNode {
-  constructor(value, next = null) {
-    this.value = value;
-    this.next = next;
-  }
-}
+const l1 = new Node(9);
+l1.next = new Node(9);
+l1.next.next = new Node(9);
+l1.next.next.next = new Node(9);
+l1.next.next.next.next = new Node(9);
+l1.next.next.next.next.next = new Node(9);
+l1.next.next.next.next.next.next = new Node(9);
 
-const l1 = new ListNode(1);
-l1.next = new ListNode(2);
+const l2 = new Node(9);
+l2.next = new Node(9);
+l2.next.next = new Node(9);
+l2.next.next.next = new Node(9);
 
-const l2 = new ListNode(3);
-l2.next = new ListNode(4);
+const l3 = new Node(2);
+l3.next = new Node(4);
+l3.next.next = new Node(3);
+
+const l4 = new Node(5);
+l4.next = new Node(6);
+l4.next.next = new Node(4);
 
 console.log(addTwoNumbers(l1, l2));
