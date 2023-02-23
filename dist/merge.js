@@ -1,16 +1,19 @@
 "use strict";
 const merge = (nums1, m, nums2, n) => {
-    for (let i = 0; i < m; i++) {
-        for (let j = 0; j < n; j++) {
-            if (nums2[j] < nums1[i]) {
-                console.log(nums2[j]);
-            }
-            console.log(nums1[i]);
+    nums1.splice(m, n);
+    if (nums1[0] === undefined) {
+        nums1[0] = nums2[0];
+        nums2.shift();
+    }
+    for (let i = 0; i < m + n; i++) {
+        if (nums2[0] <= nums1[i] || nums1[i] === undefined) {
+            nums1.splice(i, 0, nums2[0]);
+            nums2.shift();
         }
     }
 };
-const nums1 = [3, 5, 3, 0, 0, 0];
-const m = 3;
-const nums2 = [1, 2, 3];
-const n = 3;
-console.log(merge(nums1, m, nums2, n));
+const nums1 = [0];
+const m = 0;
+const nums2 = [1];
+const n = 1;
+merge(nums1, m, nums2, n);
