@@ -16,20 +16,10 @@
  * }
  */
 
-class TreeNode {
-  val: string;
-  left: TreeNode | null;
-  right: TreeNode | null;
-
-  constructor(val: string) {
-    this.val = val;
-    this.left = null;
-    this.right = null;
-  }
-}
+import { TreeNode } from "./treeNode";
 
 type InorderTraversalType = {
-  (root: TreeNode | null): string[];
+  (root: TreeNode | null): number[];
 };
 
 const inorderTraversal: InorderTraversalType = (root) => {
@@ -37,7 +27,7 @@ const inorderTraversal: InorderTraversalType = (root) => {
 
   const stack: TreeNode[] = [root];
 
-  const result: string[] = [];
+  const result: number[] = [];
 
   while (stack.length !== 0) {
     let cur: TreeNode = stack[stack.length - 1];
@@ -49,7 +39,7 @@ const inorderTraversal: InorderTraversalType = (root) => {
     }
 
     if (!cur?.left) {
-      result.push(cur.val);
+      if (cur.val) result.push(cur.val);
       stack.pop();
     }
 
@@ -61,13 +51,13 @@ const inorderTraversal: InorderTraversalType = (root) => {
   return result;
 };
 
-const a = new TreeNode("a");
-const b = new TreeNode("b");
-const c = new TreeNode("c");
-const d = new TreeNode("d");
-const e = new TreeNode("e");
-const f = new TreeNode("f");
-const g = new TreeNode("g");
+const a = new TreeNode(1);
+const b = new TreeNode(2);
+const c = new TreeNode(3);
+const d = new TreeNode(4);
+const e = new TreeNode(5);
+const f = new TreeNode(6);
+const g = new TreeNode(7);
 
 a.left = b;
 a.right = e;
@@ -81,7 +71,7 @@ e.right = g;
 //       a
 //     /   \
 //    b     e
-//   / \   / \
-//  c   d f   g
+//  /  \  /  \
+// c   d f    g
 
 console.log(inorderTraversal(a));
