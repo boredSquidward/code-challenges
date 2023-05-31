@@ -1,0 +1,23 @@
+{
+  "name": "code-challenges",
+  "version": "1.0.0",
+  "description": "",
+  "main": "addBinary.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boredSquidward/code-challenges.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boredSquidward/code-challenges/issues"
+  },
+  "homepage": "https://github.com/boredSquidward/code-challenges#readme",
+  "devDependencies": {
+    "vitest": "^0.29.2"
+  }
+}

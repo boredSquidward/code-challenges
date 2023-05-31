@@ -3,6 +3,7 @@
  * @param {string} b
  * @return {string}
  */
+
 var addBinary = function (a, b) {
   const whichOneIsLonger = (firstArr, secArr) => {
     if (firstArr.length >= secArr.length) {

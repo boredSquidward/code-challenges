@@ -4,20 +4,20 @@
  * @return {ListNode}
  */
 
-import { Node } from "./src/node";
+import { Node } from "./node";
 
-var addTwoNumbers = function (l1, l2) {
-  let result = new Node();
+var addTwoNumbers = function (l1: Node, l2: Node) {
+  let result: Node = new Node(null);
 
-  let curr1 = l1;
-  let curr2 = l2;
+  let curr1: Node = l1;
+  let curr2: Node = l2;
 
-  let dummy = result;
-  let carry = 0;
-  let sum = 0;
+  let dummy: Node = result;
+  let carry: number = 0;
+  let sum: number = 0;
 
   while (curr1 || curr2 || carry) {
-    sum = (curr1 ? curr1.val : 0) + (curr2 ? curr2.val : 0) + carry;
+    sum = (curr1.val ? curr1.val : 0) + (curr2.val ? curr2.val : 0) + carry;
 
     if (sum < 10) {
       dummy.val = sum;
@@ -31,7 +31,7 @@ var addTwoNumbers = function (l1, l2) {
     if (curr2) curr2 = curr2.next;
 
     if (carry && !curr1 && !curr2) {
-      dummy.next = new Node();
+      dummy.next = new Node(null);
       dummy.next.val = carry;
       carry = 0;
       return result;
@@ -39,7 +39,7 @@ var addTwoNumbers = function (l1, l2) {
       return result;
     }
 
-    dummy.next = new Node();
+    dummy.next = new Node(null);
     dummy = dummy.next;
   }
 

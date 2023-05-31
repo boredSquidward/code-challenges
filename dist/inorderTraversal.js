@@ -1,11 +1,6 @@
 "use strict";
-class TreeNode {
-    constructor(val) {
-        this.val = val;
-        this.left = null;
-        this.right = null;
-    }
-}
+Object.defineProperty(exports, "__esModule", { value: true });
+const treeNode_1 = require("./treeNode");
 const inorderTraversal = (root) => {
     if (!root)
         return [];
@@ -19,7 +14,8 @@ const inorderTraversal = (root) => {
             continue;
         }
         if (!(cur === null || cur === void 0 ? void 0 : cur.left)) {
-            result.push(cur.val);
+            if (cur.val)
+                result.push(cur.val);
             stack.pop();
         }
         if (cur === null || cur === void 0 ? void 0 : cur.right) {
@@ -28,13 +24,13 @@ const inorderTraversal = (root) => {
     }
     return result;
 };
-const a = new TreeNode("a");
-const b = new TreeNode("b");
-const c = new TreeNode("c");
-const d = new TreeNode("d");
-const e = new TreeNode("e");
-const f = new TreeNode("f");
-const g = new TreeNode("g");
+const a = new treeNode_1.TreeNode(1);
+const b = new treeNode_1.TreeNode(2);
+const c = new treeNode_1.TreeNode(3);
+const d = new treeNode_1.TreeNode(4);
+const e = new treeNode_1.TreeNode(5);
+const f = new treeNode_1.TreeNode(6);
+const g = new treeNode_1.TreeNode(7);
 a.left = b;
 a.right = e;
 b.left = c;
