@@ -9,6 +9,7 @@ function convertToRoman(num) {
     1: "I",
   };
 
+  let output = "";
   const str = num.toString();
   const arr = str.split("").reverse();
 
@@ -16,10 +17,34 @@ function convertToRoman(num) {
     arr[i] = +arr[i] * Math.pow(10, i);
   }
 
-  console.log(arr);
+  const newArr = arr.reverse();
+
+  for (let i = 0; i < newArr.length; i++) {
+    if (newArr[i] === 0) i++;
+    if (newArr[i] >= 1000) {
+      output += "M";
+      newArr[i] -= 1000;
+      i--;
+      continue;
+    } else if (newArr[i] >= 500) {
+      output += "D";
+      newArr[i] -= "D";
+      i--;
+    } else if (newArr[i] >= 100) {
+      output += "C";
+      newArr[i] -= "C";
+      i--;
+    } else if (newArr[i] >= 50) {
+    } else if (newArr[i] >= 10) {
+    } else if (newArr[i] >= 5) {
+    } else {
+    }
+  }
+
+  return output;
 }
 
 //XII
 //MMXXIII
 
-convertToRoman(1819);
+convertToRoman(1119);
