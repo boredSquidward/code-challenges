@@ -1,14 +1,4 @@
 function convertToRoman(num) {
-  const roman = {
-    1000: "M",
-    500: "D",
-    100: "C",
-    50: "L",
-    10: "X",
-    5: "V",
-    1: "I",
-  };
-
   let output = "";
   const str = num.toString();
   const arr = str.split("").reverse();
@@ -20,33 +10,70 @@ function convertToRoman(num) {
   const newArr = arr.reverse();
 
   for (let i = 0; i < newArr.length; i++) {
-    if (newArr[i] === 0) newArr.shift();
-    if (newArr[i] >= 1000) {
+    if (newArr[i] === 0) {
+      newArr.shift();
+      i--;
+    } else if (newArr[i] >= 1000) {
       output += "M";
       newArr[i] -= 1000;
       i--;
-      continue;
     } else if (newArr[i] >= 500) {
+      if (newArr[i] === 900) {
+        output += "CM";
+        newArr[i] -= 900;
+        i--;
+        continue;
+      }
       output += "D";
       newArr[i] -= 500;
       i--;
     } else if (newArr[i] >= 100) {
+      if (newArr[i] === 400) {
+        output += "CD";
+        newArr[i] -= 400;
+        i--;
+        continue;
+      }
       output += "C";
       newArr[i] -= 100;
       i--;
     } else if (newArr[i] >= 50) {
+      if (newArr[i] === 90) {
+        output += "XC";
+        newArr[i] -= 90;
+        i--;
+        continue;
+      }
       output += "L";
       newArr[i] -= 50;
       i--;
     } else if (newArr[i] >= 10) {
+      if (newArr[i] === 40) {
+        output += "XL";
+        newArr[i] -= 40;
+        i--;
+        continue;
+      }
       output += "X";
       newArr[i] -= 10;
       i--;
     } else if (newArr[i] >= 5) {
+      if (newArr[i] === 9) {
+        output += "IX";
+        newArr[i] -= 9;
+        i--;
+        continue;
+      }
       output += "V";
       newArr[i] -= 5;
       i--;
-    } else {
+    } else if (newArr[i] < 5) {
+      if (newArr[i] === 4) {
+        output += "IV";
+        newArr[i] -= 4;
+        i--;
+        continue;
+      }
       output += "I";
       newArr[i] -= 1;
       i--;
@@ -58,5 +85,4 @@ function convertToRoman(num) {
 
 //XII
 //MMXXIII
-
-convertToRoman(119);
+console.log(convertToRoman(501));
