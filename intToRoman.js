@@ -20,7 +20,7 @@ function convertToRoman(num) {
   const newArr = arr.reverse();
 
   for (let i = 0; i < newArr.length; i++) {
-    if (newArr[i] === 0) i++;
+    if (newArr[i] === 0) newArr.shift();
     if (newArr[i] >= 1000) {
       output += "M";
       newArr[i] -= 1000;
@@ -28,16 +28,28 @@ function convertToRoman(num) {
       continue;
     } else if (newArr[i] >= 500) {
       output += "D";
-      newArr[i] -= "D";
+      newArr[i] -= 500;
       i--;
     } else if (newArr[i] >= 100) {
       output += "C";
-      newArr[i] -= "C";
+      newArr[i] -= 100;
       i--;
     } else if (newArr[i] >= 50) {
+      output += "L";
+      newArr[i] -= 50;
+      i--;
     } else if (newArr[i] >= 10) {
+      output += "X";
+      newArr[i] -= 10;
+      i--;
     } else if (newArr[i] >= 5) {
+      output += "V";
+      newArr[i] -= 5;
+      i--;
     } else {
+      output += "I";
+      newArr[i] -= 1;
+      i--;
     }
   }
 
@@ -47,4 +59,4 @@ function convertToRoman(num) {
 //XII
 //MMXXIII
 
-convertToRoman(1119);
+convertToRoman(119);
