@@ -1,5 +1,6 @@
 function rot13(str) {
   const alphabet = [
+    " ",
     "A",
     "B",
     "C",
@@ -28,11 +29,16 @@ function rot13(str) {
     "Z",
   ];
 
-  str.forEach((letter) => {
+  const arr = str.split("");
+  console.log(arr);
+
+  arr.forEach((letter) => {
     const index = alphabet.indexOf(letter);
-    for (let i = 0; i < 13; i++) {}
+    console.log(index);
+
+    // for (let i = 0; i < 13; i++) {}
   });
   return str;
 }
 
-rot13("SERR PBQR PNZC");
+rot13("ABC PBQR PNZC");
