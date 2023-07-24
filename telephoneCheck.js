@@ -1,12 +1,7 @@
 function telephoneCheck(str) {
-  const arr = str.split("");
-  const regEx = /\D/g;
-
-  str.replace(regEx, "");
-
-  arr.forEach((element) => {});
-
-  return true;
+  const regEx =
+    /^(\+?1)?(\s|\-)?((\((\d{3})\))|(\d{3}))(\s|\-)?(\d{3})(\s|\-)?(\d{4})$/g;
+  return regEx.test(str);
 }
 
-telephoneCheck("555-555-5555");
+console.log(telephoneCheck("2 (757) 622-7382"));
